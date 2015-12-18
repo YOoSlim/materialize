@@ -3308,9 +3308,13 @@ $(document).ready(function(){
         }
 
         // Adjust height to current slide
-        $active.find('img').each(function() {
-          $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
-        });
+        if($active.find('img').length) {
+	   $active.find('img').each(function() {
+	      $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, queue: false, easing: 'easeOutQuad'});
+	   });
+	} else {
+	   $active.find('.caption').velocity({opacity: 1, translateX: 0, translateY: 0}, {duration: options.transition, delay: options.transition, queue: false, easing: 'easeOutQuad'});
+    	}
 
         // auto scroll
         $interval = setInterval(
